@@ -46,6 +46,7 @@ sleep 2;
 #Installing asdf
 printf "${YELLOW}Installing asdf${NC}\n";
 sleep $delay_after_message;
+sudo snap install aria2c
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 echo ". $HOME/.asdf/asdf.sh" >> ~/.zshrc
 sleep 2;
@@ -75,7 +76,7 @@ CHROME=$(ls /usr/share/applications/ | grep "chrome");
 xdg-settings set default-web-browser $CHROME
 sleep 2;
 printf "${YELLOW}Install vlc${NC}\n";
-sudo apt-get install vlc -y
+sudo snap install vlc
 sleep 2;
 printf "${YELLOW}Reboot${NC}\n";
 sleep $delay_after_message;
