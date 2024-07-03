@@ -44,8 +44,9 @@ sed -i 's/robbyrussell/powerlevel10k\/powerlevel10k/' $HOME/.zshrc
 echo 'bindkey -v' >> $HOME/.zshrc
 sleep 2;
 #Installing asdf
-printf "${YELLOW}Installing asdf${NC}\n";
+printf "${YELLOW}Installing snap, asdf${NC}\n";
 sleep $delay_after_message;
+sudo apt install snapd -y
 sudo snap install aria2c
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 echo ". $HOME/.asdf/asdf.sh" >> ~/.zshrc
@@ -75,6 +76,12 @@ sleep $delay_after_message;
 CHROME=$(ls /usr/share/applications/ | grep "chrome");
 xdg-settings set default-web-browser $CHROME
 sleep 2;
+#Installing postman
+printf "${YELLOW}Installing postman${NC}\n";
+sleep $delay_after_message;
+sudo snap install postman
+sleep 2;
+#Installing vlc
 printf "${YELLOW}Install vlc${NC}\n";
 sudo snap install vlc
 sleep 2;
