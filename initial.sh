@@ -16,6 +16,16 @@ printf "${YELLOW}Installing open-vm-tools-desktop${NC}\n";
 sleep $delay_after_message;
 sudo apt install open-vm-tools-desktop -y
 sleep 2;
+#Install git
+printf "${YELLOW}Installing git${NC}\n";
+sleep $delay_after_message;
+sudo apt install git -y
+sleep 2;
+#change git default branch name
+printf "${YELLOW}change git default branch name to main${NC}\n";
+sleep $delay_after_message;
+git config --global init.defaultBranch main
+sleep 2;
 #Activating Shared Folders
 printf "${YELLOW}Activating Shared Folders${NC}\n";
 sleep $delay_after_message;
@@ -62,6 +72,11 @@ rm -f packages.microsoft.gpg
 sudo apt install apt-transport-https -y
 sudo apt update -y
 sudo apt install code -y
+sleep 2;
+#change git default editor
+printf "${YELLOW}change git default editor${NC}\n";
+sleep $delay_after_message;
+git config --global core.editor "code --wait"
 sleep 2;
 #Installing chrome
 printf "${YELLOW}Installing chrome${NC}\n";
