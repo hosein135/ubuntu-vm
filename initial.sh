@@ -64,7 +64,7 @@ sleep 2;
 #Installing vscode
 printf "${YELLOW}Installing vscode${NC}\n";
 sleep $delay_after_message;
-sudo apt-get install wget gpg -y
+sudo apt-get install wget gpg curl -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
@@ -74,9 +74,14 @@ sudo apt update -y
 sudo apt install code -y
 sleep 2;
 #change git default editor
-printf "${YELLOW}change git default editor${NC}\n";
+printf "${YELLOW}change git default editor to vscode${NC}\n";
 sleep $delay_after_message;
 git config --global core.editor "code --wait"
+sleep 2;
+#install zed editor
+printf "${YELLOW}install zed editor${NC}\n";
+sleep $delay_after_message;
+curl https://zed.dev/install.sh | sh
 sleep 2;
 #Installing chrome
 printf "${YELLOW}Installing chrome${NC}\n";
