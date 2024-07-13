@@ -60,6 +60,7 @@ sudo apt install snapd -y
 sudo snap install aria2c
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 echo ". $HOME/.asdf/asdf.sh" >> ~/.zshrc
+echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc
 sleep 2;
 #Installing vscode
 printf "${YELLOW}Installing vscode${NC}\n";
@@ -82,6 +83,9 @@ sleep 2;
 printf "${YELLOW}install zed editor${NC}\n";
 sleep $delay_after_message;
 curl https://zed.dev/install.sh | sh
+sleep 2;
+echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.zshrc
+echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
 sleep 2;
 #Installing chrome
 printf "${YELLOW}Installing chrome${NC}\n";
