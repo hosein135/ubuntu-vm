@@ -125,11 +125,6 @@ printf "${YELLOW}change git default editor to vscode${NC}\n";
 sleep $delay_after_message;
 git config --global core.editor "code --wait"
 sleep 2;
-#Installing nix
-printf "${YELLOW}Installing nix${NC}\n";
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
-sudo grep -q '^experimental-features *= *.*flakes' /etc/nix/nix.conf || echo 'experimental-features = nix-command flakes' | sudo tee -a /etc/nix/nix.conf
-sleep 2;
 #Installing chrome
 printf "${YELLOW}Installing chrome${NC}\n";
 sleep $delay_after_message;
@@ -143,6 +138,11 @@ sleep $delay_after_message;
 CHROME=$(ls /usr/share/applications/ | grep "chrome");
 xdg-settings set default-web-browser $CHROME
 sudo sed -i 's|Exec=/usr/bin/google-chrome-stable %U|Exec=/usr/bin/google-chrome-stable --password-store=basic %U|' /usr/share/applications/google-chrome.desktop
+sleep 2;
+#Installing nix
+printf "${YELLOW}Installing nix${NC}\n";
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+sudo grep -q '^experimental-features *= *.*flakes' /etc/nix/nix.conf || echo 'experimental-features = nix-command flakes' | sudo tee -a /etc/nix/nix.conf
 sleep 2;
 printf "${YELLOW}Reboot${NC}\n";
 sleep $delay_after_message;
