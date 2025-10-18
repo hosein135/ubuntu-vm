@@ -41,7 +41,7 @@ sleep 2;
 #Install git
 printf "${YELLOW}Installing git${NC}\n";
 sleep $delay_after_message;
-sudo apt install git sed -y
+sudo apt install git zstd sed -y
 sleep 2;
 #Install github cli
 printf "${YELLOW}github cli${NC}\n";
@@ -75,6 +75,13 @@ sleep 2;
 printf "${YELLOW}Installing ZSH (Shell)${NC}\n";
 sleep $delay_after_message;
 sudo apt install zsh -y
+sleep 2;
+#Install microsoft edit
+printf "${YELLOW}Installing microsoft edit${NC}\n";
+sleep $delay_after_message;
+curl -L https://github.com/microsoft/edit/releases/download/v1.2.1/edit-1.2.0-x86_64-linux-gnu.tar.zst | tar -I 'unzstd' -xvf -
+sudo mv edit /usr/local/bin/
+sudo chmod +x /usr/local/bin/edit
 sleep 2;
 #Setting up Powerline
 printf "${YELLOW}Installing and Setting up oh-my-zsh and Powerline and Powerline Fonts${NC}\n";
