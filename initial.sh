@@ -69,6 +69,7 @@ sudo systemctl daemon-reload
 sudo mkdir /mnt/hgfs
 sudo mount -a
 sudo systemctl daemon-reload
+sudo chmod -R u+w /mnt/hgfs
 sleep 2;
 #Install Z Shell
 printf "${YELLOW}Installing ZSH (Shell)${NC}\n";
@@ -116,6 +117,11 @@ sleep 2;
 printf "${YELLOW}change git default editor to vscode${NC}\n";
 sleep $delay_after_message;
 git config --global core.editor "code --wait"
+sleep 2;
+#Installing nix
+printf "${YELLOW}Installing nix${NC}\n";
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+sudo grep -q '^experimental-features *= *.*flakes' /etc/nix/nix.conf || echo 'experimental-features = nix-command flakes' | sudo tee -a /etc/nix/nix.conf
 sleep 2;
 #Installing chrome
 printf "${YELLOW}Installing chrome${NC}\n";
