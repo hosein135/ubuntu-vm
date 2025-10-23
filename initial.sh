@@ -10,6 +10,7 @@ printf "${YELLOW}Updating packages${NC}\n";
 sleep $delay_after_message;
 sudo apt update -y &&
 sudo apt upgrade -y &&
+sudo apt autoremove -y &&
 #Installing important packages
 printf "${YELLOW}Installing important packages${NC}\n";
 sleep $delay_after_message;
